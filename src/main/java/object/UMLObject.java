@@ -13,7 +13,8 @@ public abstract class UMLObject {
 	protected int depth = 0;
 	protected boolean Select = false; 
 	
-	public UMLObject() { }
+	public UMLObject() { 
+	}
 	
 	public UMLObject(double x, double y, double width, double height, int depth) {
 		this.start.x = x;

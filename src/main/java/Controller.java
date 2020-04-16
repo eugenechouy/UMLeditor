@@ -5,11 +5,13 @@ import application.mode.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.canvas.Canvas;
 
@@ -26,6 +28,9 @@ public class Controller implements Initializable {
 	@FXML
 	private Canvas frontCanvas, backCanvas;
 	
+	@FXML
+	private MenuItem group, ungroup;
+
 	private MainCanvas mainCanvas;
 	
 	@Override
@@ -74,6 +79,20 @@ public class Controller implements Initializable {
 			@Override
 			public void handle(MouseEvent event) {
 				mainCanvas.setMode(new CompositionMode(mainCanvas));
+			}
+		});
+
+		group.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mainCanvas.group();
+			}
+		});
+
+		ungroup.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("ungroup");
 			}
 		});
 	}

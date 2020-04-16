@@ -8,6 +8,7 @@ public class UseCaseObject extends UMLObject{
 		super(x, y, width, height, depth);
 	}
 	
+	@Override
 	public void draw(PaintBrush paintBrush) {
 		if(this.Select) {
 			double[] dx = { width/2, width, width/2, 0 },

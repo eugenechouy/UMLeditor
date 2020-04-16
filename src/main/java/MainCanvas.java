@@ -44,6 +44,7 @@ public class MainCanvas {
 		backCanvas = back;
 		frontPaintBrush = new PaintBrush(frontCanvas);
 		backPaintBrush = new PaintBrush(backCanvas);
+		mode = new SelectMode(this);
 		setCanvasEvent();
 	}
 	
@@ -91,5 +92,9 @@ public class MainCanvas {
 				top = object.get(u).getDepth();
 		}
 		return candidate.size() == 0 ? 0 : top+1;
+	}
+
+	public void group(){
+		mode.group();
 	}
 }

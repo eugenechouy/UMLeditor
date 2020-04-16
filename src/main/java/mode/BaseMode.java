@@ -15,9 +15,9 @@ public abstract class BaseMode {
 	protected String mode;
 	protected MainCanvas main;
 	
-	List<UMLLine> lines;
-	List<UMLObject> object;
-	
+	protected List<UMLLine> lines;
+	protected List<UMLObject> object;
+
 	public BaseMode(MainCanvas main) {
 		this.main = main;
 		this.frontPaintBrush = main.getFrontPaintBrush();
@@ -30,6 +30,10 @@ public abstract class BaseMode {
 		this.mode = mode;
 	}
 	
+	public void group(){
+		
+	}
+
 	public abstract void pressedAction(MouseEvent event);
 	public abstract void draggedAction(MouseEvent event);
 	public abstract void releasedAction(MouseEvent event);
