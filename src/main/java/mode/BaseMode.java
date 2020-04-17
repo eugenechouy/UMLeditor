@@ -31,7 +31,9 @@ public abstract class BaseMode {
 	}
 	
 	public void group(){
-		
+	}
+
+	public void unGroup(){
 	}
 
 	public abstract void pressedAction(MouseEvent event);

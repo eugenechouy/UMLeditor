@@ -22,6 +22,11 @@ public class CompositeObject extends UMLObject{
 	}
 
     @Override
+    public List<UMLObject> getCompositedObject(){
+        return this.composited;
+    }
+
+    @Override
 	public void draw(PaintBrush paintBrush) {
 		for(int i=0 ; i<composited.size() ; i++)
             composited.get(i).draw(paintBrush);

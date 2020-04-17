@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="500.0" stylesheets="application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane prefHeight="550.0" prefWidth="700.0" stylesheets="application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <MenuBar prefHeight="29.0" prefWidth="500.0">
+      <MenuBar prefHeight="30.0" prefWidth="700.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -30,13 +30,31 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Canvas fx:id="backCanvas" height="450.0" layoutX="100.0" style="-fx-border-width: 1; -fx-border-color: black;" width="400.0" />
-      <Button fx:id="select_btn" layoutY="37.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="select" />
-      <Button fx:id="association_btn" layoutY="107.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="association line" textOverrun="CLIP" />
-      <Button fx:id="generalization_btn" layoutY="176.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="generalzation line " textOverrun="CLIP" />
-      <Button fx:id="composition_btn" layoutY="246.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="composition line" textOverrun="CLIP" />
-      <Button fx:id="class_btn" layoutY="315.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="class" />
-      <Button fx:id="use_case_btn" layoutY="381.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="90.0" text="use case" />
-      <Canvas fx:id="frontCanvas" height="450.0" layoutX="100.0" style="-fx-border-width: 1; -fx-border-color: black;" width="400.0" />
+      <Canvas fx:id="backCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
+      <Button fx:id="select_btn" layoutY="50.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="select">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="association_btn" layoutY="130.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="association &#10;line&#10;" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="generalization_btn" layoutY="210.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="generalzation&#10;line " textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="composition_btn" layoutY="290.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="composition &#10;line" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="class_btn" layoutY="370.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="class">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="use_case_btn" layoutY="450.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="use case">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Canvas fx:id="frontCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
    </children>
 </AnchorPane>

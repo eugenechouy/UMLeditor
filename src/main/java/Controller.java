@@ -92,7 +92,7 @@ public class Controller implements Initializable {
 		ungroup.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println("ungroup");
+				mainCanvas.unGroup();
 			}
 		});
 	}

@@ -3,6 +3,8 @@ package application.object;
 import application.Point;
 import application.PaintBrush;
 
+import java.util.*;
+
 public abstract class UMLObject {
 	
 	protected Point start = new Point();
@@ -12,16 +14,19 @@ public abstract class UMLObject {
 	
 	protected int depth = 0;
 	protected boolean Select = false; 
+
+	protected String textField;
 	
 	public UMLObject() { 
 	}
 	
-	public UMLObject(double x, double y, double width, double height, int depth) {
+	public UMLObject(double x, double y, double width, double height, int depth, String textField) {
 		this.start.x = x;
 		this.start.y = y;
 		this.width = width;
 		this.height = height;
 		this.depth = depth;
+		this.textField = textField;
 	}
 	
 	public void move(double distX, double distY) {
@@ -94,5 +99,9 @@ public abstract class UMLObject {
 		return new Point(start.x + dx[portNum], start.y + dy[portNum]);
 	}
 	
+	public List<UMLObject> getCompositedObject(){
+        return null;
+    }
+
 	public abstract void draw(PaintBrush paintBrush);
 }

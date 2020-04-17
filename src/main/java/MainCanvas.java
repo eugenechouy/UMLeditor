@@ -45,6 +45,7 @@ public class MainCanvas {
 		frontPaintBrush = new PaintBrush(frontCanvas);
 		backPaintBrush = new PaintBrush(backCanvas);
 		mode = new SelectMode(this);
+		backPaintBrush.border();
 		setCanvasEvent();
 	}
 	
@@ -77,6 +78,7 @@ public class MainCanvas {
 			object.get(i).draw(backPaintBrush);
 		for(int i=0 ; i<lines.size() ; i++)
 			lines.get(i).draw(backPaintBrush);
+		backPaintBrush.border();
 	}
 	
 	public int getUpperMostInArea(double sX, double sY, double width, double height) {
@@ -96,5 +98,9 @@ public class MainCanvas {
 
 	public void group(){
 		mode.group();
+	}
+
+	public void unGroup(){
+		mode.unGroup();
 	}
 }
