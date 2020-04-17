@@ -30,7 +30,10 @@
           </Menu>
         </menus>
       </MenuBar>
+      
       <Canvas fx:id="backCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
+      <Canvas fx:id="frontCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
+      
       <Button fx:id="select_btn" layoutY="50.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="select">
          <font>
             <Font size="11.0" />
@@ -55,6 +58,5 @@
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Canvas fx:id="frontCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
    </children>
 </AnchorPane>

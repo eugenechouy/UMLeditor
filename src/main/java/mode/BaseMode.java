@@ -12,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 public abstract class BaseMode {
 	
 	protected PaintBrush frontPaintBrush, backPaintBrush;
-	protected String mode;
 	protected MainCanvas main;
 	
 	protected List<UMLLine> lines;
@@ -24,10 +23,6 @@ public abstract class BaseMode {
 		this.backPaintBrush = main.getBackPaintBrush();
 		this.object = main.getObject();
 		this.lines = main.getLines();
-	}
-	
-	public void setMode(String mode) {
-		this.mode = mode;
 	}
 	
 	public void group(){

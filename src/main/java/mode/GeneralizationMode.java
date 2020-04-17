@@ -34,8 +34,9 @@ public class GeneralizationMode extends BaseMode {
 					upperMost = candidate.get(i);
 				}	
 			}
-			start = object.get(upperMost);
-			startPort = start.getClosestPort(new Point(event.getX(), event.getY()));
+			startPort = object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY()));
+			if(startPort != -1)
+				start = object.get(upperMost);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class GeneralizationMode extends BaseMode {
 						upperMost = candidate.get(i);
 					}	
 				}
-				if(start != object.get(upperMost))
+				if(start != object.get(upperMost) && object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY())) != -1)
 					lines.add(new GeneralizationLine(start, startPort, 
 							 					  object.get(upperMost), 
 							 					  object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY()))

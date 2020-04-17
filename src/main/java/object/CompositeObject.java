@@ -1,5 +1,6 @@
 package application.object;
 
+import application.Point;
 import application.PaintBrush;
 import application.object.UMLObject;
 
@@ -57,4 +58,9 @@ public class CompositeObject extends UMLObject{
         }
 	}
 	
+    @Override
+    public int getClosestPort(Point clicked) {
+		return -1;
+	}
+
 }
