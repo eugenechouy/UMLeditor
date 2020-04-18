@@ -104,12 +104,14 @@ public class SelectMode extends BaseMode {
 
 	@Override
 	public void group() {
-		List<UMLObject> composited = new ArrayList<>();
-		for(int i=0 ; i<selected.size() ; i++)
-			composited.add(object.get(selected.get(i)));
-		for(int i=0 ; i<composited.size() ; i++)
-			object.remove(composited.get(i));
-		object.add(new CompositeObject(composited));
+		if(selected.size() > 1){
+			List<UMLObject> composited = new ArrayList<>();
+			for(int i=0 ; i<selected.size() ; i++)
+				composited.add(object.get(selected.get(i)));
+			for(int i=0 ; i<composited.size() ; i++)
+				object.remove(composited.get(i));
+			object.add(new CompositeObject(composited));
+		}
 	}
 
 	@Override
