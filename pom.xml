@@ -45,6 +45,19 @@
                     <mainClass>HelloFX</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-jar</argument>
+                        <argument>target/UMLeditor-0.1.0.jar</argument>
+                    </arguments>
+                    <mainClass>application.Main</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

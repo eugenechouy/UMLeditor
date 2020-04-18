@@ -16,4 +16,6 @@ bin/
 log/
 target/
 
+.vscode/
+
 dependency-reduced-pom.xml

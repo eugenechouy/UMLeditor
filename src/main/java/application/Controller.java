@@ -1,19 +1,22 @@
 package application;
 
-import application.mode.*;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.mode.AssociationMode;
+import application.mode.ClassMode;
+import application.mode.CompositionMode;
+import application.mode.GeneralizationMode;
+import application.mode.SelectMode;
+import application.mode.UseCaseMode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.canvas.Canvas;
 
 public class Controller implements Initializable {
 
