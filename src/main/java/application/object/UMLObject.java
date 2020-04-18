@@ -38,6 +38,10 @@ public abstract class UMLObject {
 		this.Select = Select;
 	}
 	
+	public void setName(String name){
+		this.textField = name;
+	}
+
 	public boolean cover(double x, double y) {
 		if ( (x >= this.start.x && x <= this.start.x + this.width) &&
 			 (y >= this.start.y && y <= this.start.y + this.height ))

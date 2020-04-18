@@ -4,15 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.mode.AssociationMode;
-import application.mode.ClassMode;
-import application.mode.CompositionMode;
-import application.mode.GeneralizationMode;
-import application.mode.SelectMode;
-import application.mode.UseCaseMode;
+import application.mode.*;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -32,7 +31,7 @@ public class Controller implements Initializable {
 	private Canvas frontCanvas, backCanvas;
 	
 	@FXML
-	private MenuItem group, ungroup;
+	private MenuItem group, ungroup, change_object_name;
 
 	private MainCanvas mainCanvas;
 	
@@ -96,6 +95,13 @@ public class Controller implements Initializable {
 			@Override
 			public void handle(ActionEvent event) {
 				mainCanvas.unGroup();
+			}
+		});
+
+		change_object_name.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mainCanvas.changeObjectName();
 			}
 		});
 	}

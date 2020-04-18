@@ -2,7 +2,7 @@ package application.mode;
 
 import application.MainCanvas;
 import application.Point;
-import application.object.AssociationLine;
+import application.line.AssociationLine;
 import application.object.UMLObject;
 
 import java.util.ArrayList;

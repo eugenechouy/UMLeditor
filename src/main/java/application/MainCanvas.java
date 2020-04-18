@@ -1,6 +1,7 @@
 package application;
 
 import application.object.*;
+import application.line.*;
 import application.mode.*;
 
 import java.util.*;
@@ -71,6 +72,19 @@ public class MainCanvas {
 			}
 		});
 	}
+
+
+	public void group(){
+		mode.group();
+	}
+
+	public void unGroup(){
+		mode.unGroup();
+	}
+	
+	public void changeObjectName(){
+		mode.changeObjectName();
+	}
 	
 	public void rePaint() {
 		backPaintBrush.eraser(0, 0, frontCanvas.getWidth(), frontCanvas.getHeight());
@@ -94,13 +108,5 @@ public class MainCanvas {
 				top = object.get(u).getDepth();
 		}
 		return candidate.size() == 0 ? 0 : top+1;
-	}
-
-	public void group(){
-		mode.group();
-	}
-
-	public void unGroup(){
-		mode.unGroup();
 	}
 }

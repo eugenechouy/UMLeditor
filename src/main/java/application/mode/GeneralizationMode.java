@@ -5,7 +5,7 @@ import java.util.List;
 
 import application.MainCanvas;
 import application.Point;
-import application.object.GeneralizationLine;
+import application.line.GeneralizationLine;
 import application.object.UMLObject;
 import javafx.scene.input.MouseEvent;
 

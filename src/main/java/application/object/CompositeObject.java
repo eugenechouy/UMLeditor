@@ -17,7 +17,16 @@ public class CompositeObject extends UMLObject{
                 this.depth = composited.get(i).getDepth();
 	}
     
+    @Override
+    public void move(double distX, double distY) {
+		for(int i=0 ; i<composited.size() ; i++){
+            composited.get(i).move(distX, distY);
+        }
+	}
+	
+
     public void setSelect(boolean Select) {
+        this.Select = Select;
 		for(int i=0 ; i<composited.size() ; i++)
             composited.get(i).setSelect(Select);
 	}
@@ -43,6 +52,15 @@ public class CompositeObject extends UMLObject{
 	}
 
     @Override
+    public boolean intercept(double sX, double sY, double width, double height) {
+        for(int i=0 ; i<composited.size() ; i++){
+            if(composited.get(i).intercept(sX, sY, width, height))
+                return true;
+        }
+		return false;
+    }
+
+    @Override
     public boolean isInside(double sX, double sY, double width, double height) {
 		for(int i=0 ; i<composited.size() ; i++){
             if(!composited.get(i).isInside(sX, sY, width, height))
@@ -51,13 +69,6 @@ public class CompositeObject extends UMLObject{
 		return true;
 	}
 
-    @Override
-    public void move(double distX, double distY) {
-		for(int i=0 ; i<composited.size() ; i++){
-            composited.get(i).move(distX, distY);
-        }
-	}
-	
     @Override
     public int getClosestPort(Point clicked) {
 		return -1;

@@ -1,11 +1,12 @@
-package application.object;
+package application.line;
 
 import application.PaintBrush;
 import application.Point;
+import application.object.UMLObject;
 
-public class GeneralizationLine extends UMLLine {
+public class CompositionLine extends UMLLine {
 
-	public GeneralizationLine(UMLObject start, int startPort, UMLObject end, int endPort) {
+	public CompositionLine(UMLObject start, int startPort, UMLObject end, int endPort) {
 		super(start, startPort, end, endPort);
 	}
 	
@@ -25,11 +26,14 @@ public class GeneralizationLine extends UMLLine {
         double x2 = (1.0 / 2.0 * cos + Math.sqrt(3) / 2 * sin) * arrowHeadSize + e.x;
         double y2 = (1.0 / 2.0 * sin - Math.sqrt(3) / 2 * cos) * arrowHeadSize + e.y;
         
-        paintBrush.drawLine(s.x, s.y, (x1+x2)/2, (y1+y2)/2);
+        double x4 = (x1 + x2) - e.x;
+        double y4 = (y1 + y2) - e.y;
+        
+        paintBrush.drawLine(s.x, s.y, x4, y4);
         paintBrush.drawLine(e.x, e.y, x1, y1);
         paintBrush.drawLine(e.x, e.y, x2, y2);
-        paintBrush.drawLine(x1, y1, x2, y2);
-        
+        paintBrush.drawLine(x1, y1, x4, y4);
+        paintBrush.drawLine(x2, y2, x4, y4);
 	}
 
 }

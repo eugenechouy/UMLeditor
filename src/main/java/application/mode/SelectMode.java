@@ -5,7 +5,16 @@ import application.object.*;
 
 import java.util.*;
 
+import javafx.event.EventHandler;
+
+import javafx.fxml.FXMLLoader;
+
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 public class SelectMode extends BaseMode {
 	
@@ -111,6 +120,42 @@ public class SelectMode extends BaseMode {
 				for(int i=0 ; i<u.size() ; i++)
 					object.add(u.get(i));
 				object.remove(object.get(selected.get(0)));
+			}
+		}
+	}
+
+	@Override
+	public void changeObjectName() {
+		if(selected.size() == 1 && object.get(selected.get(0)).getCompositedObject() == null){
+			try {
+				Parent root = FXMLLoader.load(getClass().getResource("/changeName.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("change object name");
+				stage.setScene(new Scene(root));
+				stage.show();
+
+				Scene scene = stage.getScene();
+				Button okButton = (Button)scene.lookup("#ok_btn");
+				Button cancelButton = (Button)scene.lookup("#cancel_btn");
+				TextArea input = (TextArea)scene.lookup("#input");
+
+				okButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						object.get(selected.get(0)).setName(input.getText());
+						stage.close();
+						main.rePaint();
+					}
+				});
+
+				cancelButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						stage.close();
+					}
+				});
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
 		}
 	}

@@ -5,7 +5,7 @@ import java.util.List;
 import application.MainCanvas;
 import application.PaintBrush;
 import application.object.UMLObject;
-import application.object.UMLLine;
+import application.line.UMLLine;
 
 import javafx.scene.input.MouseEvent;
 
@@ -25,13 +25,10 @@ public abstract class BaseMode {
 		this.lines = main.getLines();
 	}
 	
-	public void group(){
-	}
-
-	public void unGroup(){
-	}
-
 	public abstract void pressedAction(MouseEvent event);
 	public abstract void draggedAction(MouseEvent event);
 	public abstract void releasedAction(MouseEvent event);
+	public void group() {};
+	public void unGroup() {};
+	public void changeObjectName() {};
 }

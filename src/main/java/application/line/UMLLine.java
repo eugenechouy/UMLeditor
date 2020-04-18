@@ -1,6 +1,7 @@
-package application.object;
+package application.line;
 
 import application.PaintBrush;
+import application.object.UMLObject;
 
 public abstract class UMLLine {
 	

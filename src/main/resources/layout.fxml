@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="550.0" prefWidth="700.0" stylesheets="application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane prefHeight="550.0" prefWidth="700.0" stylesheets="layout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <MenuBar prefHeight="30.0" prefWidth="700.0">
         <menus>
@@ -19,8 +19,8 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem fx:id="group" mnemonicParsing="false" text="Group" />
-                  <MenuItem fx:id="ungroup" mnemonicParsing="false" text="UnGroup" />
-                  <MenuItem mnemonicParsing="false" text="change object name" />
+               <MenuItem fx:id="ungroup" mnemonicParsing="false" text="UnGroup" />
+               <MenuItem fx:id="change_object_name" mnemonicParsing="false" text="change object name" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

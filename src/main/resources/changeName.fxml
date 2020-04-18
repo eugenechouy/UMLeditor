@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea fx:id="input" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="260.0" />
+      <Button fx:id="ok_btn" layoutX="10.0" layoutY="80.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" text="OK" />
+      <Button fx:id="cancel_btn" layoutX="100.0" layoutY="80.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" text="Cancel" />
+   </children>
+</AnchorPane>

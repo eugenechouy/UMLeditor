@@ -1,11 +1,12 @@
-package application.object;
+package application.line;
 
-import application.Point;
 import application.PaintBrush;
+import application.Point;
+import application.object.UMLObject;
 
-public class AssociationLine extends UMLLine {
-	
-	public AssociationLine(UMLObject start, int startPort, UMLObject end, int endPort) {
+public class GeneralizationLine extends UMLLine {
+
+	public GeneralizationLine(UMLObject start, int startPort, UMLObject end, int endPort) {
 		super(start, startPort, end, endPort);
 	}
 	
@@ -25,9 +26,11 @@ public class AssociationLine extends UMLLine {
         double x2 = (1.0 / 2.0 * cos + Math.sqrt(3) / 2 * sin) * arrowHeadSize + e.x;
         double y2 = (1.0 / 2.0 * sin - Math.sqrt(3) / 2 * cos) * arrowHeadSize + e.y;
         
-        paintBrush.drawLine(s.x, s.y, e.x, e.y);
+        paintBrush.drawLine(s.x, s.y, (x1+x2)/2, (y1+y2)/2);
         paintBrush.drawLine(e.x, e.y, x1, y1);
         paintBrush.drawLine(e.x, e.y, x2, y2);
+        paintBrush.drawLine(x1, y1, x2, y2);
+        
 	}
 
 }
