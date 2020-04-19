@@ -20,7 +20,6 @@ public class MainCanvas {
 	private List<UMLLine> lines = new ArrayList<>();
 	
 	public void setMode(BaseMode mode) {
-		this.mode = null;
 		this.mode = mode;
 	}
 	
@@ -46,7 +45,7 @@ public class MainCanvas {
 		frontPaintBrush = new PaintBrush(frontCanvas);
 		backPaintBrush = new PaintBrush(backCanvas);
 		mode = new SelectMode(this);
-		backPaintBrush.border();
+		rePaint();
 		setCanvasEvent();
 	}
 	
@@ -87,7 +86,7 @@ public class MainCanvas {
 	}
 	
 	public void rePaint() {
-		backPaintBrush.eraser(0, 0, frontCanvas.getWidth(), frontCanvas.getHeight());
+		backPaintBrush.eraser(0, 0, backCanvas.getWidth(), backCanvas.getHeight());
 		for(int i=0 ; i<object.size() ; i++) 
 			object.get(i).draw(backPaintBrush);
 		for(int i=0 ; i<lines.size() ; i++)
@@ -108,5 +107,25 @@ public class MainCanvas {
 				top = object.get(u).getDepth();
 		}
 		return candidate.size() == 0 ? 0 : top+1;
+	}
+
+	public int getClickedObject(double x, double y){
+		List<Integer> candidate = new ArrayList<>();
+		for(int i=0 ; i<object.size() ; i++) {
+			if( object.get(i).cover(x, y) )
+				candidate.add(i);
+		}
+		if(candidate.size() > 0) {
+			int top = -1;
+			int upperMost = candidate.get(0);
+			for(int i=0 ; i<candidate.size(); i++) {
+				if( object.get(i).getDepth() >= top ) {
+					top = object.get(i).getDepth();
+					upperMost = candidate.get(i);
+				}	
+			}
+			return upperMost;
+		}
+		return -1;
 	}
 }

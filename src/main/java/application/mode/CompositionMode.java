@@ -20,20 +20,8 @@ public class CompositionMode extends BaseMode {
 	
 	@Override
 	public void pressedAction(MouseEvent event) {
-		List<Integer> candidate = new ArrayList<>();
-		for(int i=0 ; i<object.size() ; i++) {
-			if( object.get(i).cover(event.getX(), event.getY()) )
-				candidate.add(i);
-		}
-		if(candidate.size() > 0) {
-			int top = -1;
-			Integer upperMost = candidate.get(0);
-			for(int i=0 ; i<candidate.size(); i++) {
-				if( object.get(i).getDepth() >= top ) {
-					top = object.get(i).getDepth();
-					upperMost = candidate.get(i);
-				}	
-			}
+		int upperMost = main.getClickedObject(event.getX(), event.getY());
+		if(upperMost != -1){
 			startPort = object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY()));
 			if(startPort != -1)
 				start = object.get(upperMost);
@@ -48,25 +36,12 @@ public class CompositionMode extends BaseMode {
 	@Override
 	public void releasedAction(MouseEvent event) {
 		if(start != null) {
-			List<Integer> candidate = new ArrayList<>();
-			for(int i=0 ; i<object.size() ; i++) {
-				if( object.get(i).cover(event.getX(), event.getY()) )
-					candidate.add(i);
-			}
-			if(candidate.size() > 0) {
-				int top = -1;
-				Integer upperMost = candidate.get(0);
-				for(int i=0 ; i<candidate.size(); i++) {
-					if( object.get(i).getDepth() >= top ) {
-						top = object.get(i).getDepth();
-						upperMost = candidate.get(i);
-					}	
-				}
-				if(start != object.get(upperMost) && object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY())) != -1)
-					lines.add(new CompositionLine(start, startPort, 
-							 					  object.get(upperMost), 
-							 					  object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY()))
-							 					  ));
+			int upperMost = main.getClickedObject(event.getX(), event.getY());
+			if(upperMost != -1){
+				UMLObject end = object.get(upperMost);
+				int endPort = end.getClosestPort(new Point(event.getX(), event.getY()));
+				if(start != end && endPort != -1)
+					lines.add(new CompositionLine(start, startPort, end, endPort));
 				main.rePaint();
 			}
 			start = null;

@@ -21,11 +21,11 @@ public class UseCaseMode extends BaseMode {
 	
 	@Override
 	public void draggedAction(MouseEvent event) {
-
+		// nothing
 	}
 	
 	@Override
 	public void releasedAction(MouseEvent event) {
-	
+		// nothing
 	}
 }

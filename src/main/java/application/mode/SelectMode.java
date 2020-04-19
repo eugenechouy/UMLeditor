@@ -29,30 +29,19 @@ public class SelectMode extends BaseMode {
 	
 	@Override
 	public void pressedAction(MouseEvent event) {
-		List<Integer> candidate = new ArrayList<>();
 		selected.clear();
-		for(int i=0 ; i<object.size() ; i++) {
+		for(int i=0 ; i<object.size() ; i++) 
 			object.get(i).setSelect(false);
-			if( object.get(i).cover(event.getX(), event.getY()) )
-				candidate.add(i);
-		}
-		if(candidate.size() > 0) {
-			int top = -1;
-			Integer upperMost = candidate.get(0);
-			for(int i=0 ; i<candidate.size(); i++) {
-				if( object.get(i).getDepth() >= top ) {
-					top = object.get(i).getDepth();
-					upperMost = candidate.get(i);
-				}	
-			}
+
+		int upperMost = main.getClickedObject(event.getX(), event.getY());
+		if(upperMost != -1){
 			object.get(upperMost).setSelect(true);
 			selected.add(upperMost);
 		}
+	
+		startX = lastX = event.getX();
+		startY = lastY = event.getY();
 		main.rePaint();
-		lastX = event.getX();
-		lastY = event.getY();
-		startX = event.getX();
-		startY = event.getY();
 	}
 
 	@Override

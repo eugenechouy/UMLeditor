@@ -24,11 +24,11 @@ public abstract class BaseMode {
 		this.object = main.getObject();
 		this.lines = main.getLines();
 	}
-	
-	public abstract void pressedAction(MouseEvent event);
-	public abstract void draggedAction(MouseEvent event);
-	public abstract void releasedAction(MouseEvent event);
+
 	public void group() {};
 	public void unGroup() {};
 	public void changeObjectName() {};
+	public abstract void pressedAction(MouseEvent event);
+	public abstract void draggedAction(MouseEvent event);
+	public abstract void releasedAction(MouseEvent event);
 }
