@@ -18,13 +18,6 @@ public class CompositeObject extends UMLObject{
 	}
     
     @Override
-    public void move(double distX, double distY) {
-		for(int i=0 ; i<composited.size() ; i++){
-            composited.get(i).move(distX, distY);
-        }
-	}
-	
-
     public void setSelect(boolean Select) {
         this.Select = Select;
 		for(int i=0 ; i<composited.size() ; i++)
@@ -37,9 +30,10 @@ public class CompositeObject extends UMLObject{
     }
 
     @Override
-	public void draw(PaintBrush paintBrush) {
-		for(int i=0 ; i<composited.size() ; i++)
-            composited.get(i).draw(paintBrush);
+    public void move(double distX, double distY) {
+		for(int i=0 ; i<composited.size() ; i++){
+            composited.get(i).move(distX, distY);
+        }
 	}
 	
     @Override
@@ -74,4 +68,9 @@ public class CompositeObject extends UMLObject{
 		return -1;
 	}
 
+    @Override
+	public void draw(PaintBrush paintBrush) {
+		for(int i=0 ; i<composited.size() ; i++)
+            composited.get(i).draw(paintBrush);
+	}
 }

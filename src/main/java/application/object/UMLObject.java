@@ -28,10 +28,13 @@ public abstract class UMLObject {
 		this.depth = depth;
 		this.textField = textField;
 	}
+
+	public int getDepth() {
+		return depth;
+	}
 	
-	public void move(double distX, double distY) {
-		this.start.x += distX;
-		this.start.y += distY;
+	public boolean getSelect() {
+		return Select;
 	}
 	
 	public void setSelect(boolean Select) {
@@ -40,6 +43,11 @@ public abstract class UMLObject {
 	
 	public void setName(String name){
 		this.textField = name;
+	}
+
+	public void move(double distX, double distY) {
+		this.start.x += distX;
+		this.start.y += distY;
 	}
 
 	public boolean cover(double x, double y) {
@@ -74,19 +82,12 @@ public abstract class UMLObject {
 		return false;
 	}
 	
-	public int getDepth() {
-		return depth;
-	}
-	
-	public boolean getSelect() {
-		return Select;
-	}
-	
 	public int getClosestPort(Point clicked) {
 		int ret = 0;
 		double min = 1000000.0;
 		double[] dx = { width/2, width, width/2, 0 },
 			     dy = { 0, height/2, height, height/2 };
+		// top right down left
 		for(int i=0 ; i<4 ; i++) {
 			double u = clicked.distance(start.x + dx[i], start.y + dy[i]);
 			if(u < min) {

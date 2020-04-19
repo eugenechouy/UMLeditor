@@ -15,14 +15,13 @@ public class GeneralizationLine extends UMLLine {
 		Point s = start.getPortPos(startPort),
 			  e = end.getPortPos(endPort);
 		
-		// draw Arrow
 		double angle = Math.atan2((e.y - s.y), (e.x - s.x)) - Math.PI / 2.0;
         double sin = Math.sin(angle);
         double cos = Math.cos(angle);
-        // point1
+
         double x1 = (- 1.0 / 2.0 * cos + Math.sqrt(3) / 2 * sin) * arrowHeadSize + e.x;
         double y1 = (- 1.0 / 2.0 * sin - Math.sqrt(3) / 2 * cos) * arrowHeadSize + e.y;
-        // point2
+
         double x2 = (1.0 / 2.0 * cos + Math.sqrt(3) / 2 * sin) * arrowHeadSize + e.x;
         double y2 = (1.0 / 2.0 * sin - Math.sqrt(3) / 2 * cos) * arrowHeadSize + e.y;
         
