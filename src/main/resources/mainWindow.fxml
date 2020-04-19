@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.*?>
+<?import java.util.ArrayList?>
+
+<AnchorPane prefHeight="550.0" prefWidth="700.0" stylesheets="mainWindow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <MenuBar prefHeight="30.0" prefWidth="700.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+               <MenuItem fx:id="group" mnemonicParsing="false" text="Group" />
+               <MenuItem fx:id="ungroup" mnemonicParsing="false" text="UnGroup" />
+               <MenuItem fx:id="change_object_name" mnemonicParsing="false" text="change object name" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      
+      <Canvas fx:id="backCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
+      <Canvas fx:id="frontCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
+      
+      <Button fx:id="selectBtn" layoutY="50.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="select">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Button fx:id="associationBtn" layoutY="130.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="association &#10;line&#10;" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="generalizationBtn" layoutY="210.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="generalzation&#10;line " textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="compositionBtn" layoutY="290.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="composition &#10;line" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button fx:id="classBtn" layoutY="370.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="class">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Button fx:id="useCaseBtn" layoutY="450.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="use case">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+
+      <fx:define>
+         <ArrayList fx:id="buttonList">
+            <fx:reference source="selectBtn" />
+            <fx:reference source="associationBtn" />
+            <fx:reference source="generalizationBtn"/>
+            <fx:reference source="compositionBtn" />
+            <fx:reference source="classBtn" />
+            <fx:reference source="useCaseBtn" />
+         </ArrayList>
+      </fx:define>
+   </children>
+</AnchorPane>

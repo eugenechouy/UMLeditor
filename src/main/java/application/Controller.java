@@ -1,7 +1,7 @@
 package application;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import application.mode.AssociationMode;
 import application.mode.*;
@@ -19,14 +19,9 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller implements Initializable {
 
-	@FXML
-	private Button select_btn,
-				   association_btn,
-				   generalization_btn,
-				   composition_btn,
-				   class_btn,
-				   use_case_btn;
-	
+	@FXML 
+	private ArrayList<Button> buttonList;
+
 	@FXML
 	private Canvas frontCanvas, backCanvas;
 	
@@ -34,75 +29,38 @@ public class Controller implements Initializable {
 	private MenuItem group, ungroup, change_object_name;
 
 	private MainCanvas mainCanvas;
+	private ArrayList<BaseMode> modes = new ArrayList<>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mainCanvas = new MainCanvas(frontCanvas, backCanvas);
+		modes.add(new SelectMode(mainCanvas));
+		modes.add(new AssociationMode(mainCanvas));
+		modes.add(new GeneralizationMode(mainCanvas));
+		modes.add(new CompositionMode(mainCanvas));
+		modes.add(new ClassMode(mainCanvas));
+		modes.add(new UseCaseMode(mainCanvas));
 		setButtonEvent();
 	}
 
 	private void setButtonEvent() {
-		select_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new SelectMode(mainCanvas));
-			}
-		});
+		for(int i=0 ; i<buttonList.size() ; i++){
+			final int index = i;
+			buttonList.get(i).setOnAction(e -> {
+				mainCanvas.setMode(modes.get(index));
+			});
+		}
 		
-		class_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new ClassMode(mainCanvas));
-			}
-		});
-		
-		use_case_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new UseCaseMode(mainCanvas));
-			}
-		});
-		
-		association_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new AssociationMode(mainCanvas));
-			}
-		});
-		
-		generalization_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new GeneralizationMode(mainCanvas));
-			}
-		});
-		
-		composition_btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				mainCanvas.setMode(new CompositionMode(mainCanvas));
-			}
+		group.setOnAction(e -> {
+			mainCanvas.group();
 		});
 
-		group.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mainCanvas.group();
-			}
+		ungroup.setOnAction(e -> {
+			mainCanvas.unGroup();
 		});
 
-		ungroup.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mainCanvas.unGroup();
-			}
-		});
-
-		change_object_name.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mainCanvas.changeObjectName();
-			}
+		change_object_name.setOnAction(e -> {
+			mainCanvas.changeObjectName();
 		});
 	}
 }

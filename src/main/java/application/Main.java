@@ -11,7 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/layout.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
 			primaryStage.setTitle("UML editor");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
