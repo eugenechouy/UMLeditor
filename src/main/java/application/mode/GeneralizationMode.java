@@ -6,6 +6,7 @@ import java.util.List;
 import application.MainCanvas;
 import application.Port;
 import application.Point;
+import application.line.LineObject;
 import application.line.GeneralizationLine;
 import application.rect.RectObject;
 import application.UMLObject;
@@ -38,8 +39,12 @@ public class GeneralizationMode extends BaseMode {
 			UMLObject upperMost = main.getClickedObject(event.getX(), event.getY());
 			if(upperMost instanceof RectObject) {
 				Port end = ((RectObject)upperMost).getClosestPort(new Point(event.getX(), event.getY()));
-				if(start != end)
-					objects.add(new GeneralizationLine(start, end));
+				if(start != end){
+					LineObject newline = new GeneralizationLine(start, end);
+					objects.add(newline);
+					start.addLine(newline);
+					end.addLine(newline);
+				}
 				main.paint();
 			}
 		}

@@ -43,7 +43,7 @@
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Button fx:id="generalizationBtn" layoutY="210.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="generalzation&#10;line " textAlignment="CENTER" textOverrun="CLIP">
+      <Button fx:id="generalizationBtn" layoutY="210.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="generalization&#10;line " textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="11.0" />
          </font></Button>
