@@ -88,7 +88,7 @@ public class SelectMode extends BaseMode {
 		frontPaintBrush.clear();
 
 		for(int i=0 ; i<objects.size() ; ++i) {
-			if( objects.get(i).isInside(sX, sY, distX, distY) ){
+			if( objects.get(i).isCover(sX, sY, distX, distY) ){
 				objects.get(i).setSelect(true);
 				selected.add(objects.get(i));
 			}

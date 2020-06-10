@@ -18,7 +18,7 @@ public class MainCanvas {
 	private BaseMode mode;
 	
 	private List<UMLObject> objects = new ArrayList<>();
-	
+		
 	public void setMode(BaseMode mode) {
 		this.mode = mode;
 	}
@@ -90,7 +90,7 @@ public class MainCanvas {
 	public UMLObject getClickedObject(double x, double y){
 		List<UMLObject> candidate = new ArrayList<>();
 		for(int i=0 ; i<objects.size() ; ++i) {
-			if( objects.get(i).cover(x, y) )
+			if( objects.get(i).isInside(x, y) )
 				candidate.add(objects.get(i));
 		}
 		UMLObject clicked = null;

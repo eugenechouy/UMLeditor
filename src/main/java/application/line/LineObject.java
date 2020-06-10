@@ -27,13 +27,13 @@ public abstract class LineObject extends UMLObject {
 	}
 
 	@Override
-	public boolean cover(double x, double y) {
+	public boolean isInside(double x, double y) {
 		// line dont need to be clicked yet
 		return false;
 	}
 
 	@Override
-	public boolean isInside(double sX, double sY, double width, double height) {
+	public boolean isCover(double sX, double sY, double width, double height) {
 		Point port1 = start.getPosition(),
 			  port2 = end.getPosition();
 		if(port1.x >= sX && port1.x <= sX + width &&

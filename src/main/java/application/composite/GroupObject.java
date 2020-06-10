@@ -41,18 +41,18 @@ public class GroupObject extends UMLObject{
 	}
 	
     @Override
-    public boolean cover(double x, double y) {
+    public boolean isInside(double x, double y) {
         for(int i=0 ; i<objects.size() ; ++i){
-            if(objects.get(i).cover(x, y))
+            if(objects.get(i).isInside(x, y))
                 return true;
         }
 		return false;
 	}
 
     @Override
-    public boolean isInside(double sX, double sY, double width, double height) {
+    public boolean isCover(double sX, double sY, double width, double height) {
 		for(int i=0 ; i<objects.size() ; ++i){
-            if(!objects.get(i).isInside(sX, sY, width, height))
+            if(!objects.get(i).isCover(sX, sY, width, height))
                 return false;
         }
 		return true;

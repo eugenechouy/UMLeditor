@@ -39,6 +39,6 @@ public abstract class UMLObject {
 
     public abstract void draw(PaintBrush paintBrush);
     public abstract void move(double distX, double distY);
-    public abstract boolean cover(double x, double y);  
-    public abstract boolean isInside(double sX, double sY, double width, double height);
+    public abstract boolean isInside(double x, double y);  
+    public abstract boolean isCover(double sX, double sY, double width, double height);
 } 

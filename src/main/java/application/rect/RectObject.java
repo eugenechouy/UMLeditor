@@ -53,7 +53,7 @@ public abstract class RectObject extends UMLObject {
 	}
 
 	@Override
-	public boolean cover(double x, double y) {
+	public boolean isInside(double x, double y) {
 		if ( (x >= start.x && x <= start.x + width) &&
 			 (y >= start.y && y <= start.y + height ))
 			return true;
@@ -61,7 +61,7 @@ public abstract class RectObject extends UMLObject {
 	}
 
 	@Override
-	public boolean isInside(double sX, double sY, double width, double height) {
+	public boolean isCover(double sX, double sY, double width, double height) {
 		if ( this.start.x >= sX &&
 		     this.start.y >= sY &&
 		     this.start.x + this.width <= sX + width &&
