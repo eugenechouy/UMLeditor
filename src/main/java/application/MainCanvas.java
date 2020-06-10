@@ -1,8 +1,9 @@
 package application;
 
-import application.object.*;
+import application.rect.*;
 import application.line.*;
 import application.mode.*;
+import application.composite.*;
 
 import java.util.*;
 
@@ -16,19 +17,14 @@ public class MainCanvas {
 	
 	private BaseMode mode;
 	
-	private List<UMLObject> object = new ArrayList<>();
-	private List<UMLLine> lines = new ArrayList<>();
+	private List<UMLObject> objects = new ArrayList<>();
 	
 	public void setMode(BaseMode mode) {
 		this.mode = mode;
 	}
-	
-	public List<UMLLine> getLines(){
-		return lines;
-	}
 
 	public List<UMLObject> getObject() {
-		return object;
+		return objects;
 	}
 	
 	public PaintBrush getFrontPaintBrush() {
@@ -45,7 +41,7 @@ public class MainCanvas {
 		frontPaintBrush = new PaintBrush(frontCanvas);
 		backPaintBrush = new PaintBrush(backCanvas);
 		mode = new SelectMode(this);
-		rePaint();
+		paint();
 		setCanvasEvent();
 	}
 	
@@ -72,7 +68,6 @@ public class MainCanvas {
 		});
 	}
 
-
 	public void group(){
 		mode.group();
 	}
@@ -85,47 +80,28 @@ public class MainCanvas {
 		mode.changeObjectName();
 	}
 	
-	public void rePaint() {
+	public void paint() {
 		backPaintBrush.eraser(0, 0, backCanvas.getWidth(), backCanvas.getHeight());
-		for(int i=0 ; i<object.size() ; i++) 
-			object.get(i).draw(backPaintBrush);
-		for(int i=0 ; i<lines.size() ; i++)
-			lines.get(i).draw(backPaintBrush);
+		for(int i=0 ; i<objects.size() ; ++i) 
+			objects.get(i).draw(backPaintBrush);
 		backPaintBrush.border();
 	}
-	
-	public int getUpperMostInArea(double sX, double sY, double width, double height) {
-		List<Integer> candidate = new ArrayList<>();
-		for(int i=0 ; i<object.size() ; i++) {
-			if(object.get(i).intercept(sX, sY, width, height))
-				candidate.add(i);
-		}
-		int top = 0;
-		for(int i=0 ; i<candidate.size(); i++) {
-			int u = candidate.get(i).intValue();
-			if( object.get(u).getDepth() > top ) 
-				top = object.get(u).getDepth();
-		}
-		return candidate.size() == 0 ? 0 : top+1;
-	}
 
-	public int getClickedObject(double x, double y){
-		List<Integer> candidate = new ArrayList<>();
-		for(int i=0 ; i<object.size() ; i++) {
-			if( object.get(i).cover(x, y) )
-				candidate.add(i);
+	public UMLObject getClickedObject(double x, double y){
+		List<UMLObject> candidate = new ArrayList<>();
+		for(int i=0 ; i<objects.size() ; ++i) {
+			if( objects.get(i).cover(x, y) )
+				candidate.add(objects.get(i));
 		}
+		UMLObject clicked = null;
 		if(candidate.size() > 0) {
-			int top = -1;
-			int upperMost = candidate.get(0);
-			for(int i=0 ; i<candidate.size(); i++) {
-				if( object.get(i).getDepth() >= top ) {
-					top = object.get(i).getDepth();
-					upperMost = candidate.get(i);
-				}	
+			clicked = candidate.get(0);
+			for(int i=0 ; i<candidate.size(); ++i) {
+				if( candidate.get(i).getDepth() >= clicked.getDepth() ) 
+					clicked = candidate.get(i);
 			}
-			return upperMost;
 		}
-		return -1;
+		return clicked;
 	}
+	
 }

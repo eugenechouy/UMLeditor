@@ -1,19 +1,19 @@
 package application.line;
 
+import application.Port;
 import application.PaintBrush;
 import application.Point;
-import application.object.UMLObject;
 
-public class GeneralizationLine extends UMLLine {
+public class GeneralizationLine extends LineObject {
 
-	public GeneralizationLine(UMLObject start, int startPort, UMLObject end, int endPort) {
-		super(start, startPort, end, endPort);
+	public GeneralizationLine(Port start, Port end) {
+		super(start, end);
 	}
 	
 	@Override
 	public void draw(PaintBrush paintBrush) {
-		Point s = start.getPortPos(startPort),
-			  e = end.getPortPos(endPort);
+		Point s = start.getPosition(),
+			  e = end.getPosition();
 		
 		double angle = Math.atan2((e.y - s.y), (e.x - s.x)) - Math.PI / 2.0;
         double sin = Math.sin(angle);
@@ -29,7 +29,6 @@ public class GeneralizationLine extends UMLLine {
         paintBrush.drawLine(e.x, e.y, x1, y1);
         paintBrush.drawLine(e.x, e.y, x2, y2);
         paintBrush.drawLine(x1, y1, x2, y2);
-        
 	}
-
+    
 }

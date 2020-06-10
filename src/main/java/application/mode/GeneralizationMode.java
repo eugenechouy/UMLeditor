@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.MainCanvas;
+import application.Port;
 import application.Point;
 import application.line.GeneralizationLine;
-import application.object.UMLObject;
+import application.rect.RectObject;
+import application.UMLObject;
+
 import javafx.scene.input.MouseEvent;
 
 public class GeneralizationMode extends BaseMode {
 
-	private UMLObject start;
-	private int startPort;
+	private Port start;
 	
 	public GeneralizationMode(MainCanvas main) {
 		super(main);
@@ -20,12 +22,9 @@ public class GeneralizationMode extends BaseMode {
 	
 	@Override
 	public void pressedAction(MouseEvent event) {
-		int upperMost = main.getClickedObject(event.getX(), event.getY());
-		if(upperMost != -1){
-			startPort = object.get(upperMost).getClosestPort(new Point(event.getX(), event.getY()));
-			if(startPort != -1)
-				start = object.get(upperMost);
-		}
+		UMLObject upperMost = main.getClickedObject(event.getX(), event.getY());
+		if(upperMost instanceof RectObject)
+			start = ((RectObject)upperMost).getClosestPort(new Point(event.getX(), event.getY()));
 	}
 
 	@Override
@@ -36,16 +35,15 @@ public class GeneralizationMode extends BaseMode {
 	@Override
 	public void releasedAction(MouseEvent event) {
 		if(start != null) {
-			int upperMost = main.getClickedObject(event.getX(), event.getY());
-			if(upperMost != -1){
-				UMLObject end = object.get(upperMost);
-				int endPort = end.getClosestPort(new Point(event.getX(), event.getY()));
-				if(start != end && endPort != -1)
-					lines.add(new GeneralizationLine(start, startPort, end, endPort));
-				main.rePaint();
+			UMLObject upperMost = main.getClickedObject(event.getX(), event.getY());
+			if(upperMost instanceof RectObject) {
+				Port end = ((RectObject)upperMost).getClosestPort(new Point(event.getX(), event.getY()));
+				if(start != end)
+					objects.add(new GeneralizationLine(start, end));
+				main.paint();
 			}
-			start = null;
 		}
+		start = null;
 	}
 
 }

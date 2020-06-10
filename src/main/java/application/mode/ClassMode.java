@@ -1,7 +1,7 @@
 package application.mode;
 
 import application.MainCanvas;
-import application.object.ClassObject;
+import application.rect.ClassObject;
 import javafx.scene.input.MouseEvent;
 
 public class ClassMode extends BaseMode{
@@ -15,8 +15,8 @@ public class ClassMode extends BaseMode{
 	
 	@Override
 	public void pressedAction(MouseEvent event)  {
-		object.add(new ClassObject(event.getX(), event.getY(), width, height, main.getUpperMostInArea(event.getX(), event.getY(), width, height)));
-		main.rePaint();
+		objects.add(new ClassObject(event.getX(), event.getY(), width, height));
+		main.paint();
 	}
 	
 	@Override

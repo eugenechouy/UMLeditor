@@ -1,19 +1,19 @@
 package application.line;
 
+import application.Port;
 import application.PaintBrush;
 import application.Point;
-import application.object.UMLObject;
 
-public class CompositionLine extends UMLLine {
+public class CompositionLine extends LineObject {
 
-	public CompositionLine(UMLObject start, int startPort, UMLObject end, int endPort) {
-		super(start, startPort, end, endPort);
+	public CompositionLine(Port start, Port end) {
+		super(start, end);
 	}
 	
 	@Override
 	public void draw(PaintBrush paintBrush) {
-		Point s = start.getPortPos(startPort),
-			  e = end.getPortPos(endPort);
+		Point s = start.getPosition(),
+			  e = end.getPosition();
 		
 		double angle = Math.atan2((e.y - s.y), (e.x - s.x)) - Math.PI / 2.0;
         double sin = Math.sin(angle);
@@ -34,5 +34,5 @@ public class CompositionLine extends UMLLine {
         paintBrush.drawLine(x1, y1, x4, y4);
         paintBrush.drawLine(x2, y2, x4, y4);
 	}
-
+    
 }

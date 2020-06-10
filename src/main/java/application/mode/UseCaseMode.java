@@ -1,7 +1,7 @@
 package application.mode;
 
 import application.MainCanvas;
-import application.object.UseCaseObject;
+import application.rect.UseCaseObject;
 import javafx.scene.input.MouseEvent;
 
 public class UseCaseMode extends BaseMode {
@@ -15,8 +15,8 @@ public class UseCaseMode extends BaseMode {
 	
 	@Override
 	public void pressedAction(MouseEvent event)  {
-		object.add(new UseCaseObject(event.getX(), event.getY(), width, height, main.getUpperMostInArea(event.getX(), event.getY(), width, height)));
-		main.rePaint();
+		objects.add(new UseCaseObject(event.getX(), event.getY(), width, height));
+		main.paint();
 	}
 	
 	@Override

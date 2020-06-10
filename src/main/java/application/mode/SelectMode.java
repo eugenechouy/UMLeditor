@@ -1,7 +1,9 @@
 package application.mode;
 
+import application.UMLObject;
+import application.Point;
 import application.MainCanvas;
-import application.object.*;
+import application.composite.*;
 
 import java.util.*;
 
@@ -18,10 +20,10 @@ import javafx.scene.control.TextArea;
 
 public class SelectMode extends BaseMode {
 	
-	private double lastX, lastY;
-	private double startX, startY;
+	private Point start = new Point(),
+				  last = new Point();
 
-	private List<Integer> selected = new ArrayList<>();
+	private List<UMLObject> selected = new ArrayList<>();
 
 	public SelectMode(MainCanvas main) {
 		super(main);
@@ -29,30 +31,31 @@ public class SelectMode extends BaseMode {
 	
 	@Override
 	public void pressedAction(MouseEvent event) {
+		for(int i=0 ; i<selected.size() ; ++i) 
+			selected.get(i).setSelect(false);
 		selected.clear();
-		for(int i=0 ; i<object.size() ; i++) 
-			object.get(i).setSelect(false);
 
-		int upperMost = main.getClickedObject(event.getX(), event.getY());
-		if(upperMost != -1){
-			object.get(upperMost).setSelect(true);
-			selected.add(upperMost);
+		UMLObject clicked = main.getClickedObject(event.getX(), event.getY());
+		if(clicked != null){
+			clicked.setSelect(true);
+			selected.add(clicked);
 		}
-	
-		startX = lastX = event.getX();
-		startY = lastY = event.getY();
-		main.rePaint();
+		start.x = last.x = event.getX();
+		start.y = last.y = event.getY();
+		main.paint();
 	}
 
 	@Override
 	public void draggedAction(MouseEvent event) {
 		if(selected.size() > 0) {
-			for(int i=0 ; i<selected.size() ; i++)
-				object.get(selected.get(i)).move(event.getX() - lastX, event.getY() - lastY);
-			main.rePaint();
+			for(int i=0 ; i<selected.size() ; ++i)
+				selected.get(i).move(event.getX() - last.x, event.getY() - last.y);
+			main.paint();
 		} else {
-			double distX = event.getX()-startX, distY = event.getY()-startY;
-			double sX = startX, sY = startY;
+			double distX = event.getX() - start.x, 
+				   distY = event.getY() - start.y;
+			double sX = start.x, 
+			       sY = start.y;
 			if(distX < 0) {
 				sX += distX;
 				distX = Math.abs(distX);
@@ -64,14 +67,16 @@ public class SelectMode extends BaseMode {
 			frontPaintBrush.clear();
 			frontPaintBrush.strokeRectangle(sX, sY, distX, distY);
 		}
-		lastX = event.getX();
-		lastY = event.getY();
+		last.x = event.getX();
+		last.y = event.getY();
 	}
 	
 	@Override
 	public void releasedAction(MouseEvent event) {
-		double distX = event.getX()-startX, distY = event.getY()-startY;
-	    double sX = startX, sY = startY;
+		double distX = event.getX()-start.x, 
+		       distY = event.getY()-start.y;
+	    double sX = start.x, 
+		       sY = start.y;
 		if(distX < 0) {
 			sX += distX;
 			distX = Math.abs(distX);
@@ -82,42 +87,42 @@ public class SelectMode extends BaseMode {
 		}
 		frontPaintBrush.clear();
 
-		for(int i=0 ; i<object.size() ; i++) {
-			if( object.get(i).isInside(sX, sY, distX, distY) ){
-				object.get(i).setSelect(true);
-				selected.add(i);
+		for(int i=0 ; i<objects.size() ; ++i) {
+			if( objects.get(i).isInside(sX, sY, distX, distY) ){
+				objects.get(i).setSelect(true);
+				selected.add(objects.get(i));
 			}
 		}
-		main.rePaint();
+		main.paint();
 	}
 
 	@Override
 	public void group() {
 		if(selected.size() > 1){
 			List<UMLObject> composited = new ArrayList<>();
-			for(int i=0 ; i<selected.size() ; i++)
-				composited.add(object.get(selected.get(i)));
-			for(int i=0 ; i<composited.size() ; i++)
-				object.remove(composited.get(i));
-			object.add(new CompositeObject(composited));
+			for(int i=0 ; i<selected.size() ; ++i)
+				composited.add(selected.get(i));
+			for(int i=0 ; i<composited.size() ; ++i)
+				objects.remove(composited.get(i));
+			objects.add(new GroupObject(composited));
 		}
 	}
 
 	@Override
 	public void unGroup() {
 		if(selected.size() == 1){
-			List<UMLObject> u = object.get(selected.get(0)).getCompositedObject();
+			List<UMLObject> u = selected.get(0).getGroupObjects();
 			if(u != null){
-				for(int i=0 ; i<u.size() ; i++)
-					object.add(u.get(i));
-				object.remove(object.get(selected.get(0)));
+				for(int i=0 ; i<u.size() ; ++i)
+					objects.add(u.get(i));
+				objects.remove(selected.get(0));
 			}
 		}
 	}
 
 	@Override
 	public void changeObjectName() {
-		if(selected.size() == 1 && object.get(selected.get(0)).getCompositedObject() == null){
+		if(selected.size() == 1 && selected.get(0).getGroupObjects() == null){
 			try {
 				Parent root = FXMLLoader.load(getClass().getResource("/changeName.fxml"));
 				Stage stage = new Stage();
@@ -133,9 +138,9 @@ public class SelectMode extends BaseMode {
 				okButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						object.get(selected.get(0)).setName(input.getText());
+						selected.get(0).setName(input.getText());
 						stage.close();
-						main.rePaint();
+						main.paint();
 					}
 				});
 
@@ -150,5 +155,4 @@ public class SelectMode extends BaseMode {
 			}
 		}
 	}
-
 }
