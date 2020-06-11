@@ -44,7 +44,7 @@ public class Controller implements Initializable {
 	}
 
 	private void setButtonEvent() {
-		for(int i=0 ; i<buttonList.size() ; i++){
+		for(int i=0 ; i<buttonList.size() ; ++i){
 			final int index = i;
 			buttonList.get(i).setOnAction(e -> {
 				mainCanvas.setMode(modes.get(index));

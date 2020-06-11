@@ -3,13 +3,10 @@
 ## Requirement
 
 * JDK 9 up
+* Maven
 
 ## Run
 
 ```
 mvn clean package exec:exec
 ```
-
-## TO DO
-
-* 物件深度( depth )
