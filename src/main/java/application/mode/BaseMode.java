@@ -3,9 +3,8 @@ package application.mode;
 import java.util.List;
 
 import application.MainCanvas;
-import application.PaintBrush;
 import application.UMLObject;
-import application.line.LineObject;
+import application.util.PaintBrush;
 
 import javafx.scene.input.MouseEvent;
 
@@ -16,8 +15,8 @@ public abstract class BaseMode {
 	
 	protected List<UMLObject> objects;
 
-	public BaseMode(MainCanvas main) {
-		this.main = main;
+	public BaseMode() {
+		this.main = MainCanvas.getInstance();
 		this.frontPaintBrush = main.getFrontPaintBrush();
 		this.backPaintBrush = main.getBackPaintBrush();
 		this.objects = main.getObject();

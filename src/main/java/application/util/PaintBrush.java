@@ -1,4 +1,4 @@
-package application;
+package application.util;
 
 import javafx.geometry.VPos;
 import javafx.scene.paint.Color;

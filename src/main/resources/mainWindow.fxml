@@ -34,41 +34,8 @@
       
       <Canvas fx:id="backCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
       <Canvas fx:id="frontCanvas" height="520.0" layoutX="104.0" layoutY="30.0" style="-fx-border-width: 1; -fx-border-color: black;" width="594.0" />
-      
-      <Button fx:id="selectBtn" layoutY="50.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="select">
-         <font>
-            <Font size="12.0" />
-         </font></Button>
-      <Button fx:id="associationBtn" layoutY="130.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="association &#10;line&#10;" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font size="11.0" />
-         </font></Button>
-      <Button fx:id="generalizationBtn" layoutY="210.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="generalization&#10;line " textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font size="11.0" />
-         </font></Button>
-      <Button fx:id="compositionBtn" layoutY="290.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="composition &#10;line" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font size="11.0" />
-         </font></Button>
-      <Button fx:id="classBtn" layoutY="370.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="class">
-         <font>
-            <Font size="12.0" />
-         </font></Button>
-      <Button fx:id="useCaseBtn" layoutY="450.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="100.0" text="use case">
-         <font>
-            <Font size="12.0" />
-         </font></Button>
 
-      <fx:define>
-         <ArrayList fx:id="buttonList">
-            <fx:reference source="selectBtn" />
-            <fx:reference source="associationBtn" />
-            <fx:reference source="generalizationBtn"/>
-            <fx:reference source="compositionBtn" />
-            <fx:reference source="classBtn" />
-            <fx:reference source="useCaseBtn" />
-         </ArrayList>
-      </fx:define>
+      <VBox fx:id="taskbar" layoutY="30.0" prefHeight="520.0" prefWidth="104.0" />
+
    </children>
 </AnchorPane>

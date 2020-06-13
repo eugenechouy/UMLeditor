@@ -1,15 +1,14 @@
 package application.mode;
 
-import application.MainCanvas;
+import java.util.*;
+
 import application.Port;
 import application.Point;
+import application.MainCanvas;
 import application.line.LineObject;
 import application.line.AssociationLine;
 import application.rect.RectObject;
 import application.UMLObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.scene.input.MouseEvent;
 
@@ -17,8 +16,8 @@ public class AssociationMode extends BaseMode {
 
 	private Port start;
 	
-	public AssociationMode(MainCanvas main) {
-		super(main);
+	public AssociationMode() {
+		super();
 	}
 	
 	@Override

@@ -2,7 +2,7 @@ package application.line;
 
 import application.Port;
 import application.Point;
-import application.PaintBrush;
+import application.util.PaintBrush;
 
 public class AssociationLine extends LineObject {
 	

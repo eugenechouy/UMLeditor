@@ -1,6 +1,6 @@
 package application.rect;
 
-import application.PaintBrush;
+import application.util.PaintBrush;
 
 import javafx.scene.paint.Color;
 

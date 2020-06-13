@@ -1,8 +1,8 @@
 package application.composite;
 
 import application.Point;
-import application.PaintBrush;
 import application.UMLObject;
+import application.util.PaintBrush;
 
 import java.util.*;
 

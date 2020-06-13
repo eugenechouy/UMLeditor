@@ -9,8 +9,8 @@ public class UseCaseMode extends BaseMode {
 	private final double width = 100.0,
 						 height = 65.0;
 
-	public UseCaseMode(MainCanvas main) {
-		super(main);
+	public UseCaseMode() {
+		super();
 	}
 	
 	@Override

@@ -1,8 +1,8 @@
 package application.line;
 
 import application.Port;
-import application.PaintBrush;
 import application.Point;
+import application.util.PaintBrush;
 
 public class GeneralizationLine extends LineObject {
 

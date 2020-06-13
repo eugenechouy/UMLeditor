@@ -9,8 +9,8 @@ public class ClassMode extends BaseMode{
 	private final double width = 100.0,
 						 height = 65.0;
 	
-	public ClassMode(MainCanvas main) {
-		super(main);
+	public ClassMode() {
+		super();
 	}
 	
 	@Override

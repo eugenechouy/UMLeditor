@@ -1,13 +1,17 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-Button {
+.button {
+    -fx-pref-height: 80px;
+    -fx-pref-width: 100px;
     -fx-border-radius: 6px;
     -fx-background-color: #48a4eb;
     -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 10 0 0 0;
+    -fx-border-insets: 10 0 0 0;
+    -fx-background-insets: 10 0 0 0;
 }
 
-Button:focused {
-    -fx-border-radius: 6px;
+.button:focused {
     -fx-background-color: #0c3c61;
-    -fx-text-fill: white;
 }

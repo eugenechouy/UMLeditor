@@ -1,9 +1,9 @@
 package application.line;
 
-import application.Point;
 import application.Port;
-import application.PaintBrush;
+import application.Point;
 import application.UMLObject;
+import application.util.PaintBrush;
 
 public abstract class LineObject extends UMLObject {
 	

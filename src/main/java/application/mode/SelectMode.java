@@ -1,8 +1,8 @@
 package application.mode;
 
-import application.UMLObject;
 import application.Point;
 import application.MainCanvas;
+import application.UMLObject;
 import application.composite.*;
 
 import java.util.*;
@@ -25,8 +25,8 @@ public class SelectMode extends BaseMode {
 
 	private List<UMLObject> selected = new ArrayList<>();
 
-	public SelectMode(MainCanvas main) {
-		super(main);
+	public SelectMode() {
+		super();
 	}
 	
 	@Override

@@ -1,6 +1,6 @@
 package application;
 
-import application.PaintBrush;
+import application.util.PaintBrush;
 import application.rect.RectObject;
 import application.line.LineObject;
 

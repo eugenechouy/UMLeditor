@@ -2,8 +2,8 @@ package application.rect;
 
 import application.Point;
 import application.Port;
-import application.PaintBrush;
 import application.UMLObject;
+import application.util.PaintBrush;
 
 import java.util.*;
 

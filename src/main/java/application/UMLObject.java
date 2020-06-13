@@ -1,6 +1,6 @@
 package application;
 
-import application.PaintBrush;
+import application.util.PaintBrush;
 
 import java.util.*;
 

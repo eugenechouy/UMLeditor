@@ -1,11 +1,10 @@
 package application.mode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import application.MainCanvas;
 import application.Port;
 import application.Point;
+import application.MainCanvas;
 import application.line.LineObject;
 import application.line.CompositionLine;
 import application.rect.RectObject;
@@ -17,8 +16,8 @@ public class CompositionMode extends BaseMode {
 
 	private Port start;
 	
-	public CompositionMode(MainCanvas main) {
-		super(main);
+	public CompositionMode() {
+		super();
 	}
 	
 	@Override

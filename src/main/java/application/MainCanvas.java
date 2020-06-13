@@ -4,6 +4,7 @@ import application.rect.*;
 import application.line.*;
 import application.mode.*;
 import application.composite.*;
+import application.util.*;
 
 import java.util.*;
 
@@ -16,9 +17,19 @@ public class MainCanvas {
 	private PaintBrush frontPaintBrush, backPaintBrush;
 	
 	private BaseMode mode;
+
+	private static MainCanvas mainCanvas;
 	
 	private List<UMLObject> objects = new ArrayList<>();
 		
+	private MainCanvas() {};
+
+	public static MainCanvas getInstance() {
+		if(mainCanvas == null)
+			mainCanvas = new MainCanvas();
+		return mainCanvas;
+	}
+
 	public void setMode(BaseMode mode) {
 		this.mode = mode;
 	}
@@ -35,12 +46,12 @@ public class MainCanvas {
 		return backPaintBrush;
 	}
 	
-	public MainCanvas(Canvas front, Canvas back) {
+	public void registerCanvas(Canvas front, Canvas back){
 		frontCanvas = front;
 		backCanvas = back;
 		frontPaintBrush = new PaintBrush(frontCanvas);
 		backPaintBrush = new PaintBrush(backCanvas);
-		mode = new SelectMode(this);
+		mode = new SelectMode();
 		paint();
 		setCanvasEvent();
 	}
