@@ -2,7 +2,7 @@
 
 simple UML editor used to practice OO principle 
 
-![](https://i.imgur.com/X7MndeO.png)
+![](https://i.imgur.com/iKeezTr.png | width=200)
 
 ## Requirement
 
