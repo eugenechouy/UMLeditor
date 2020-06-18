@@ -26,6 +26,10 @@ public class Port {
         return center;
     }
 
+    public RectObject getParent() {
+        return parent;
+    }
+
     public void addLine(LineObject line) {
         lines.add(line);
     }

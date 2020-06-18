@@ -1,6 +1,7 @@
 package application;
 
 import application.util.PaintBrush;
+import application.Port;
 
 import java.util.*;
 
@@ -36,6 +37,10 @@ public abstract class UMLObject {
     public List<UMLObject> getGroupObjects(){
         return null;
     }
+
+    public Port getClosestPort(Point clicked) {
+		return null;
+	}
 
     public abstract void draw(PaintBrush paintBrush);
     public abstract void move(double distX, double distY);

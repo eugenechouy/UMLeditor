@@ -23,8 +23,7 @@ public class AssociationMode extends BaseMode {
 	@Override
 	public void pressedAction(MouseEvent event) {
 		UMLObject upperMost = main.getClickedObject(event.getX(), event.getY());
-		if(upperMost instanceof RectObject)
-			start = ((RectObject)upperMost).getClosestPort(new Point(event.getX(), event.getY()));
+		start = upperMost.getClosestPort(new Point(event.getX(), event.getY()));
 	}
 
 	@Override
@@ -36,16 +35,14 @@ public class AssociationMode extends BaseMode {
 	public void releasedAction(MouseEvent event) {
 		if(start != null) {
 			UMLObject upperMost = main.getClickedObject(event.getX(), event.getY());
-			if(upperMost instanceof RectObject) {
-				Port end = ((RectObject)upperMost).getClosestPort(new Point(event.getX(), event.getY()));
-				if(start != end){
-					LineObject newline = new AssociationLine(start, end);
-					objects.add(newline);
-					start.addLine(newline);
-					end.addLine(newline);
-				}
-				main.paint();
+			Port end = upperMost.getClosestPort(new Point(event.getX(), event.getY()));
+			if(end != null && start.getParent() != end.getParent()) {
+				LineObject newline = new AssociationLine(start, end);
+				objects.add(newline);
+				start.addLine(newline);
+				end.addLine(newline);
 			}
+			main.paint();
 		}
 		start = null;
 	}

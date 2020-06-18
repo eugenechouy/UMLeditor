@@ -28,6 +28,7 @@ public abstract class RectObject extends UMLObject {
 			ports[i] = new Port(x + dx[i], y + dy[i], this);
 	}
 	
+	@Override
 	public Port getClosestPort(Point clicked) {
 		int ret = 0;
 		double min = 1000000.0;

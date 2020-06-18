@@ -104,7 +104,14 @@ public class SelectMode extends BaseMode {
 				composited.add(selected.get(i));
 			for(int i=0 ; i<composited.size() ; ++i)
 				objects.remove(composited.get(i));
-			objects.add(new GroupObject(composited));
+
+			GroupObject newobject = new GroupObject(composited);
+			objects.add(newobject);
+
+			for(int i=0 ; i<selected.size() ; ++i) 
+				selected.get(i).setSelect(false);
+			selected.clear();
+			selected.add(newobject);
 		}
 	}
 
@@ -113,9 +120,12 @@ public class SelectMode extends BaseMode {
 		if(selected.size() == 1){
 			List<UMLObject> u = selected.get(0).getGroupObjects();
 			if(u != null){
-				for(int i=0 ; i<u.size() ; ++i)
+				for(int i=0 ; i<u.size() ; ++i){
 					objects.add(u.get(i));
+					selected.add(u.get(i));
+				}
 				objects.remove(selected.get(0));
+				selected.remove(selected.get(0));
 			}
 		}
 	}
